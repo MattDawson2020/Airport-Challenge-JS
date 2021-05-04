@@ -8,13 +8,16 @@ class Airport {
 
   land(plane) {
     if(this.weather.isStormy() === true) {
-      throw new Error( "Cannot land in storm");
+      throw new Error( "Cannot land in a storm");
     };
     this.hangar.push(plane)
     plane.land();
   };
 
   takeOff(plane) {
+    if(this.weather.isStormy() === true) {
+      throw new Error( "Cannot takeoff in a storm");
+    };
     this.hangar.pop(plane)
     plane.takeOff;
   };

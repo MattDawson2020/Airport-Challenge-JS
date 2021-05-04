@@ -32,16 +32,20 @@ describe("Airport", function() {
   });
 
   it("Raises an error if you land in storm", function() {
-    // weather = jasmine.createSpyObj('weather', ['isStormy']);
     spyOn(airport.weather, "isStormy").and.returnValue(true);
-    // stormyAirport = new Airport(weather, 20)
-    expect(function() {airport.land(plane) }).toThrowError(Error, "Cannot land in storm")
+    expect(function() {airport.land(plane) }).toThrowError(Error, "Cannot land in a storm")
   });
 
   it("can allow a plan to takeoff", function() {
     airport.land(plane);
     airport.takeOff(plane);
     expect(airport.hangar.length).toEqual(0)
+  });
+
+  it("Raises an error if you takeoff in storm", function() {
+    airport.land(plane);
+    spyOn(airport.weather, "isStormy").and.returnValue(true);
+    expect(function() {airport.takeOff(plane) }).toThrowError(Error, "Cannot takeoff in a storm")
   });
 
 });
