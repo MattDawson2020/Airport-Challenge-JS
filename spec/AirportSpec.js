@@ -21,10 +21,21 @@ describe("Airport", function() {
   it("Has default capacity", function() {
     expect(airport.defaultCapacity).toEqual(20)
   });
+  it("Has default capacity", function() {
+    biggerAirport = new Airport(new Weather, 50);
+    expect(biggerAirport.defaultCapacity).toEqual(50)
+  });
 
   it("Can land planes and return them", function() {
     airport.land(plane);
     expect(airport.hangar.length).toEqual(1)
+  });
+
+  it("Raises an error if you land in storm", function() {
+    // weather = jasmine.createSpyObj('weather', ['isStormy']);
+    spyOn(airport.weather, "isStormy").and.returnValue(true);
+    // stormyAirport = new Airport(weather, 20)
+    expect(function() {airport.land(plane) }).toThrowError(Error, "Cannot land in storm")
   });
 
   it("can allow a plan to takeoff", function() {
