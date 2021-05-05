@@ -6,7 +6,6 @@ describe("Airport", function() {
   beforeEach(function() {
     airport = new Airport
     plane = jasmine.createSpyObj('plane', ['land', 'takeOff', 'isFlying'])
-    // weather = wether double
   });
 
   it("Can store planes", function() {
