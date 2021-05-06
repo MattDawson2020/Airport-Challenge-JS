@@ -3,7 +3,7 @@ class Airport {
   constructor(weather = new Weather, capacity = 20) {
     this.weather = weather
     this.hangar = []
-    this.defaultCapacity = capacity
+    this.capacity = capacity
   };
 
   land(plane) {

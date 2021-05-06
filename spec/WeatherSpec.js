@@ -6,7 +6,7 @@ describe("Weather", function() {
   });
 
   it("can be stormy", function() {
-    expect(weather.isStormy()).toMatch(/false|true/)
+    expect(weather.isStormy()).toMatch(/true|false/)
   });
 
 });
